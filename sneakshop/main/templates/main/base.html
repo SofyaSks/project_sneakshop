@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href= {% static 'main/css/base.css' %}>
+
+    <title>{% block title %} {% endblock title %} </title>
+</head>
+<body>
+    <header>
+        <div class="div-menu">
+            <nav>
+                <ul>
+                    <li>
+                        <a href="#">HOME</a>
+                    </li>
+                    <li>
+                        <a href="#">CATALOGUE</a>
+                    </li>
+                    <li>
+                        <a href="#">LOGO_IMG</a>
+                    </li>
+                    <li>
+                        <a href="#">NEW</a>
+                    </li>
+                    <li>
+                        <a href="#">DELIVERY</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="div-body">
+        {% block body %}  {% endblock body %}
+    </div>
+
+    <footer>
+    <ul>
+        <li>
+            <a href="#">insta</a>
+        </li>
+        <li>
+            <a href="#">telegram</a>
+        </li>
+        <li>
+            <p>address</p>
+        </li>
+        <li>
+            <p>contacts</p>
+        </li>
+    </ul>
+    </footer>
+
+
+    
+</body>
+</html>

@@ -5,3 +5,5 @@ def index(request):
         request,
         'main/index.html'
     )
+
+
