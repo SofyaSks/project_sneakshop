@@ -3,8 +3,8 @@ from . import models
 
 @admin.register(models.Sneaker)
 class AdminSneaker(admin.ModelAdmin):
-    list_display = ['name', 'slug', 'category', 'color', 'available', 'image', 'description', 'created']
-    prepopulated_fields = {'slug': ('name', )}
+    list_display = ['brand', 'name', 'slug', 'category', 'color', 'available', 'image', 'description', 'created']
+    prepopulated_fields = {'slug': ('brand', 'name')}
 
 @admin.register(models.Category)
 class AdminCategory(admin.ModelAdmin):

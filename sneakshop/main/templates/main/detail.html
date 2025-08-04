@@ -1,0 +1,18 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %} Detail {% endblock title %} 
+
+ {% block body %}  
+         <div>
+            <p class="name">
+               {{ sneaker.brand }}
+            </p>
+            <p class="name">
+              {{ sneaker.name }}              
+            </p>
+            <p class="name">
+              {{ sneaker.description }}
+            </p>
+         </div>
+ {% endblock body %}

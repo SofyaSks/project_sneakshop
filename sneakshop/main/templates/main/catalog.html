@@ -1,0 +1,17 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %} Catalog {% endblock title %} 
+
+ {% block body %}  
+    {% for s in sneakers %}
+    <a href= {{ s.get_absolute_url }}>
+         <div>
+            <p class="name">
+               {{ s.name }}
+               
+            </p>
+         </div>
+    </a>   
+    {% endfor %}
+ {% endblock body %}
