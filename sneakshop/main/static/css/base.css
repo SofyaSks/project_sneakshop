@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Tillana:wght@400;500;600;700;800&display=swap');
+
+
+.logo{
+    width: 400px;
+    height: auto;
+}
+
+.nav-list{
+    list-style: none;
+    justify-content: space-between;
+}
+
+.nav-list a{
+    text-decoration: none;
+    color: black;
+}
+
+.nav-li{
+    font-size: 30px;
+    /* align-content:center; */
+
+}
+
+.footer-list{
+    list-style: none;
+    justify-content: space-between;
+}
+
+.div-body{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+img{
+    width: 200px;
+    height: 200px;
+}
+
+.categories-menu{
+    display: none;
+}
+
+.nav-li:hover .categories-menu {
+    display: block;
+}

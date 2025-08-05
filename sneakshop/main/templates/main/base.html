@@ -4,32 +4,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href= {% static 'main/css/base.css' %}>
-
     <title>{% block title %} {% endblock title %} </title>
+
+    <link rel="stylesheet" href={% static 'bootstrap/css/bootstrap.min.css' %}>
+    <link rel="stylesheet" href={% static 'css/base.css' %}>
+
 </head>
 <body>
-    <header>
-        <div class="div-menu">
+    <header class="header sticky-top">
+        <div class="div-menu m-3">
             <nav>
-                <ul>
-                    <li>
+                <ul class="nav-list d-flex">
+                    <li class="nav-li mt-5 pt-3">
                         <a href= {% url 'index' %}>HOME</a>
                     </li>
-                    <li>
-                        <a href= {% url 'catalog' %}>CATALOG</a>
+                    <li class="nav-li mt-5 pt-3">
+                        <a href= {% url 'catalog' %} class="catalog-li">CATALOG</a>
+                        
+                        <div class="categories-menu">
+                            {% for c in categories %}
+                                <a href="#" class="category-item">{{ c.name }}</a>                            
+                            {% endfor %}
+                        </div>
                     </li>
                     <li>
-                        <a href="#">LOGO_IMG</a>
+                        <a href= {% url 'index' %}>
+                            <img class="logo" src="media/logo.png" alt="">
+                        </a>
                     </li>
-                    <li>
+                    <li class="nav-li mt-5 pt-3">
                         <a href="#">NEW</a>
                     </li>
-                    <li>
+                    <li class="nav-li mt-5 pt-3">
                         <a href="#">DELIVERY</a>
                     </li>
                 </ul>
             </nav>
+            <hr>        
         </div>
     </header>
 
@@ -37,8 +48,8 @@
         {% block body %}  {% endblock body %}
     </div>
 
-    <footer>
-    <ul>
+    <footer class="footer m-5 ">
+    <ul class="footer-list d-flex">
         <li>
             <a href="#">insta</a>
         </li>
@@ -55,6 +66,6 @@
     </footer>
 
 
-    
+    <script src = {% static 'bootstrap\js\bootstrap.bundle.min.js' %}></script>
 </body>
 </html>

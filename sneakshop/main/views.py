@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Sneaker
+from .models import Sneaker, Category
 
 def index(request):
     return render(
         request,
-        'main/index.html'
+        'main/index.html',
     )
+    
 
 def catalog(request):
     sneakers = Sneaker.objects.filter(available = True)

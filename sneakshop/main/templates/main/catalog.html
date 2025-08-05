@@ -7,9 +7,9 @@
     {% for s in sneakers %}
     <a href= {{ s.get_absolute_url }}>
          <div>
+            <img src={{ s.image.url }} alt="">
             <p class="name">
-               {{ s.name }}
-               
+               {{ s.name }} 
             </p>
          </div>
     </a>   
