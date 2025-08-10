@@ -5,3 +5,4 @@ def base_context(request):
     return {
         'categories': categories
     }
+

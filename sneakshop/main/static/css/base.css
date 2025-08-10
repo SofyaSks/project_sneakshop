@@ -42,5 +42,12 @@ img{
 }
 
 .nav-li:hover .categories-menu {
-    display: block;
+    position: absolute;
+    /* z-index: 1; */
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    opacity: 90%;
+    
+
 }

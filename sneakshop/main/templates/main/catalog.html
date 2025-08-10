@@ -3,7 +3,8 @@
 
 {% block title %} Catalog {% endblock title %} 
 
- {% block body %}  
+ {% block body %} 
+
     {% for s in sneakers %}
     <a href= {{ s.get_absolute_url }}>
          <div>

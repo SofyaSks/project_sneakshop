@@ -19,17 +19,18 @@
                         <a href= {% url 'index' %}>HOME</a>
                     </li>
                     <li class="nav-li mt-5 pt-3">
+
                         <a href= {% url 'catalog' %} class="catalog-li">CATALOG</a>
                         
                         <div class="categories-menu">
                             {% for c in categories %}
-                                <a href="#" class="category-item">{{ c.name }}</a>                            
+                                <a href= {% url 'catalog_by_category' category_slug=c.slug %} class="category-item">{{ c.name }}</a>                            
                             {% endfor %}
                         </div>
                     </li>
                     <li>
                         <a href= {% url 'index' %}>
-                            <img class="logo" src="media/logo.png" alt="">
+                            <img class="logo" src="/media/logo.png" alt="">
                         </a>
                     </li>
                     <li class="nav-li mt-5 pt-3">
