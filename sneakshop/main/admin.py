@@ -3,7 +3,7 @@ from . import models
 
 @admin.register(models.Sneaker)
 class AdminSneaker(admin.ModelAdmin):
-    list_display = ['brand', 'name', 'slug', 'category', 'color', 'available', 'image', 'description', 'created']
+    list_display = ['brand', 'name', 'slug', 'category', 'color', 'available', 'image', 'description', 'price', 'created']
     prepopulated_fields = {'slug': ('brand', 'name')}
 
 @admin.register(models.Category)

@@ -49,5 +49,32 @@ img{
     background-color: white;
     opacity: 90%;
     
+}
+
+/* cart */
+
+.cart-logo{
+    width: 65px;
+    height: 65px;
+    margin-top: 50px;
+    margin-right: 30px;
+}
+
+.cart-logo-count{
+    border: 2px solid black;
+    height: 27px;
+    width: 27px;
+    border-radius: 50%;
+    position: relative;
+    left: 43%;
+    bottom: 12%;
+    background-color: white;
+    
+}
+
+.cart-logo-count p{
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
 
 }
