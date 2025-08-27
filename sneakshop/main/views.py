@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Sneaker, Category
+from .models import Sneaker, Category, SneakerSize
 
 def index(request):
     return render(
@@ -34,12 +34,14 @@ def catalog(request, category_slug = None):
     )
 
 def product_details(request, slug):
-    sneaker = get_object_or_404(Sneaker, slug = slug, available = True)
+    sneaker = get_object_or_404(Sneaker, slug = slug, available = True) 
+    sizes = SneakerSize.objects.filter(sneaker=sneaker, available = True)
     return render(
         request,
         'main/detail.html',
         {
-            'sneaker': sneaker
+            'sneaker': sneaker,
+            'sizes': sizes
         }
     )
     

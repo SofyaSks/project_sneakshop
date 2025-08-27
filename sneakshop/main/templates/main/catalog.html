@@ -5,14 +5,16 @@
 
  {% block body %} 
 
-    {% for s in sneakers %}
-    <a href= {{ s.get_absolute_url }}>
-         <div>
-            <img src={{ s.image.url }} alt="">
-            <p class="name">
-               {{ s.name }} 
-            </p>
-         </div>
-    </a>   
-    {% endfor %}
+   <div class=" catalog d-flex g-4">
+      {% for s in sneakers %}
+         <a href= {{ s.get_absolute_url }}>
+            <div class="catalog-item">
+               <img src={{ s.image.url }} alt="">
+               <p class="catalog-name">
+                  {{ s.brand }} {{ s.name }} 
+               </p>
+            </div>
+         </a>   
+      {% endfor %}
+   </div>
  {% endblock body %}

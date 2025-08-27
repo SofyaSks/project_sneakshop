@@ -4,16 +4,29 @@
 {% block title %} Detail {% endblock title %} 
 
  {% block body %}  
-         <div>
+         <div class="detail d-flex">
             <img src={{ sneaker.image.url }} alt="">
-            <p class="name">
-               {{ sneaker.brand }}
-            </p>
-            <p class="name">
-              {{ sneaker.name }}              
-            </p>
-            <p class="name">
-              {{ sneaker.description }}
-            </p>
+            <div class="detail-text">
+              <p class="name">
+                {{ sneaker.brand }}
+              </p>
+              <p class="name">
+                {{ sneaker.name }}              
+              </p>
+              <p class="name">
+                {{ sneaker.description }}
+              </p>
+
+              <div class="sizes d-flex ">
+                {% for size in sizes %}
+                <div class="size-expand d-flex">
+                  <p class="size">{{ size.size }}</p>
+                  <p class="size-left"> Осталось: {{ size.amount }}</p>
+                </div>
+                {% endfor %}
+              </div>
+
+              <button>Add to cart</button>
+            </div>
          </div>
  {% endblock body %}
