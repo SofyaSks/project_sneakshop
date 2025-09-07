@@ -26,7 +26,12 @@
                 {% endfor %}
               </div>
 
-              <button>Add to cart</button>
+              <form action={% url 'cart_add' sneaker.id %} method="post">
+                {{ cart_product_form }}
+                {% csrf_token %}
+                <input type="submit" value="Add to cart">
+              
+              </form>
             </div>
          </div>
  {% endblock body %}

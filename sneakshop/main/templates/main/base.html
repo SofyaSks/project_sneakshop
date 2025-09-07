@@ -40,10 +40,18 @@
                         <a href="#">DELIVERY</a>
                     </li>
                     <li class="nav-li ">
-                        <a href="#">
+                        <a href={% url 'cart' %}>
                             <img class="cart-logo" src='/media/shoe-box.png' alt="">
                             <div class="cart-logo-count">
-                                <p>12</p>
+                                <p class="cart-quantity">
+                                    {% with cart_quantity=cart|length %}
+                                        {% if cart_quantity > 0 %}
+                                            {{ cart_quantity }}
+                                        {% else %}
+                                            0
+                                        {% endif %}
+                                    {% endwith %}
+                                </p>
                             </div>
                         </a>
                     </li>

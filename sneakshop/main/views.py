@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Sneaker, Category, SneakerSize
+from cart.forms import CartAddProductForm
 
 def index(request):
     return render(
@@ -36,12 +37,14 @@ def catalog(request, category_slug = None):
 def product_details(request, slug):
     sneaker = get_object_or_404(Sneaker, slug = slug, available = True) 
     sizes = SneakerSize.objects.filter(sneaker=sneaker, available = True)
+    cart_product_form = CartAddProductForm
     return render(
         request,
         'main/detail.html',
         {
             'sneaker': sneaker,
-            'sizes': sizes
+            'sizes': sizes,
+            'cart_product_form': cart_product_form,
         }
     )
     

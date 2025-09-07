@@ -47,7 +47,7 @@ img{
     display: flex;
     flex-direction: column;
     background-color: white;
-    opacity: 90%;
+    /* opacity: 90%; */
     
 }
 
@@ -60,7 +60,7 @@ img{
 }
 
 .catalog-item{
-    padding: 30px;
+    padding: 40px;
     border: 1px solid transparent;
     border-radius: 10px;
     background-color: rgb(243, 242, 242);
@@ -75,6 +75,7 @@ img{
 .catalog-name{
     text-align: center;
     color: black;
+    font-style: 20px;
 
 }
 
@@ -131,9 +132,8 @@ img{
     
 }
 
-.cart-logo-count p{
+.cart-quantity{
     font-size: 13px;
     font-weight: bold;
     text-align: center;
-
 }
