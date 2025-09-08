@@ -1,27 +1,27 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_POST
-from main.models import Sneaker
+from main.models import Sneaker, SneakerSize
 from . cart import Cart
 from . forms import CartAddProductForm
-
 
 
 @require_POST
 def cart_add(request, product_id):
     cart = Cart(request)
-    product = get_object_or_404(Sneaker, id = product_id)
     form = CartAddProductForm(request.POST)
     if form.is_valid():
         cd = form.cleaned_data
-        cart.add(product=product, quantity=cd['quantity'], 
+        size_id = cd['size_id']
+        sneaker_size = get_object_or_404(SneakerSize, id = size_id, sneaker_id = product_id)
+        cart.add(sneaker_size=sneaker_size, quantity=cd['quantity'], 
                  override_quantity=cd['override'])
     return redirect('cart')
 
 @require_POST
-def cart_remove(request, product_id):
+def cart_remove(request, size_id):
     cart = Cart(request)
-    product = get_object_or_404(Sneaker, id = product_id)
-    cart.remove(product)
+    sneaker_size = get_object_or_404(SneakerSize, id = size_id)
+    cart.remove(sneaker_size)
     return redirect('cart')
 
 def cart_detail(request):

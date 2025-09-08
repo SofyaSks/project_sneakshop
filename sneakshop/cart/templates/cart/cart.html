@@ -4,29 +4,60 @@
 {% block title %} Catalog {% endblock title %} 
 
  {% block body %} 
-    {% for item in cart %}
-      {% with product=item.product %}
-         <div class="cart-card d-flex">
-                    <div class="cart-card-img">
-                        <img src={% if product.image %} {{ product.image.url }} {% else %} {% static 'img/noimage.jpg' %} {% endif %}  alt="">
-                    </div>
-                    <div class="cart-card-info">
-                        <div class="cart-card-name">
-                            <p>{{ product.name }}</p>
-                        </div>
-                        <div class="cart-card-q">
-                            <p>Quantity: {{ item.quantity }}</p>
-                        </div>
-                    </div>
-                    <form action={% url 'cart_remove' product.id %} method="post">
-                        <input type="submit" value="Remove" class="remove-btn">
-                        {% csrf_token %}
-                    </form>
-                    <p class="price">$ {{ product.price }}</p>
-                </div>
+    <div class="cart-container">
+  <h2>Ваша корзина</h2>
+
+  {% if cart %}
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Товар</th>
+          <th>Размер</th>
+          <th>Цена</th>
+          <th>Количество</th>
+          <th>Сумма</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in cart %}
+          <tr>
+            <td>
+              {{ item.sneaker.name }}
+            </td>
+            <td>
+              {{ item.size }}
+            </td>
+            <td>
+              {{ item.price }} ₽
+            </td>
+            <td>
+              {{ item.quantity }}
+            </td>
+            <td>
+              {{ item.total_price }} ₽
+            </td>
+            <td>
+              <form action="{% url 'cart_remove' item.sneaker_size.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger btn-sm">Удалить</button>
+              </form>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <div class="cart-total">
+      <h4>Итого: {{ cart.get_total_price }} ₽</h4>
+    </div>
 
 
-      {% endwith %}
-    {% endfor %}
+  {% else %}
+    <p>Ваша корзина пуста.</p>
+  {% endif %}
+</div>
+
+
 
  {% endblock body %}
