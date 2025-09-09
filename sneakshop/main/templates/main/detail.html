@@ -17,55 +17,25 @@
                 {{ sneaker.description }}
               </p>
 
-
               <div class="sizes d-flex">
-                  {% for size in sizes %}
-                    <form action={% url 'cart_add' sneaker.id %} method="post" class="size-expand d-flex">
-                      {% csrf_token %}
-                      <p class="size">{{ size.size }}</p>
-                      <p class="size-left">Осталось: {{ size.amount }}</p>
-                      {{ cart_product_form.quantity }}
+                {% for size in sizes %}
+                 <form action={% url 'cart_add' sneaker.id %} method="post" class="size-expand d-flex">
+                  {% csrf_token %}
+                  <div class="radio-size">
+                    <input type="radio" id= {{ size.size }} value= {{ size.id }} name='size'>
+                    <label for={{ size.size }}>{{ size.size }}</label>
+                    <p>Осталось: {{ size.amount }}</p>
+                    {{ cart_product_form.quantity }}
                       <input type="hidden" name="size_id" value={{ size.id }}>
                       <input type="hidden" name="override" value="False">
                       <button type="submit">Добавить</button>
-                    </form>
-                  {% endfor %}
-                </div>
-
-                <!-- <div class="sizes d-flex">
-                  {% for size in sizes %}
-                    <form action={% url 'cart_add' sneaker.id %} method="post" class="size-expand d-flex">
-                      {% csrf_token %}
-                     <label>
-                      <input type="radio" name="size-choice" 
-                      value={{ size.id }} data-amount={{ size.amount }}>
-                      {{ size.size }} <br>
-                      Осталось: {{ size.amount }}
-                     </label>
-                    </form>
-                  {% endfor %}
-                </div>
-
-                <div class="quantity">
-                      <label for="id_quantity">Количество:</label>
-                      {{ cart_product_form.quantity }}
-                    </div>
-
-                    {{ cart_product_form.override }}
-                    {{ cart_product_form.size_id }}
-
-                    <button type="submit">Добавить в корзину</button>
-                  </form> -->
-
-            
+                  </div>
+                  </form>
+                {% endfor %}
+              </div>
 
 
-              <!-- <form action={% url 'cart_add' sneaker.id %} method="post">
-                {{ cart_product_form }}
-                {% csrf_token %}
-                <input type="submit" value="Add to cart">
-              
-              </form> -->
+             
             </div>
          </div>
 

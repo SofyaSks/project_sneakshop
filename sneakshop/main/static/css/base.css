@@ -1,14 +1,45 @@
-@import url('https://fonts.googleapis.com/css2?family=Tillana:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Expletus+Sans:ital,wght@0,400..700;1,400..700&display=swap');
 
+
+@font-face {
+    font-family: 'Expletus';
+    src: url('ExpletusSans-Italic-VariableFont_wght.ttf') ;
+
+}
+
+body {
+    font-family: 'Expletus', serif;
+    
+}
 
 .logo{
     width: 400px;
     height: auto;
 }
 
+.login{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    right: 15px;
+    top: 1px;
+}
+
+.login:hover{
+    width: 50px;
+    height: 50px;
+}
+
+/* .login-div :hover{
+    border: 1px solid black;
+} */
+
 .nav-list{
     list-style: none;
     justify-content: space-between;
+    margin-left: 50px;
+    margin-right: 50px;
+    font-weight: bolder;
 }
 
 .nav-list a{
@@ -137,3 +168,4 @@ img{
     font-weight: bold;
     text-align: center;
 }
+
