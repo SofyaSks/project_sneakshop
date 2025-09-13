@@ -63,6 +63,9 @@ class SneakerSize(models.Model):
     available = models.BooleanField(default=True)
     amount = models.PositiveIntegerField()
 
+    def __str__(self):
+        return str(self.size)
+
     # class Meta:
     #     verbose_name = 'Размер кроссовок'
     #     verbose_name_plural = 'Размеры кроссовок'

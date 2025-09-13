@@ -13,15 +13,23 @@ class Cart():
     def save(self):
         self.session.modified = True
 
-    def add(self, sneaker_size, quantity = 1, override_quantity = False):
+    # def add(self, sneaker_size, quantity = 1, override_quantity = False):
+    #     sneaker_size_id = str(sneaker_size.id)
+    #     if sneaker_size_id not in self.cart:
+    #         self.cart[sneaker_size_id] = {'quantity':0,
+    #                                  'price': str(sneaker_size.sneaker.price)}
+    #     if override_quantity:
+    #         self.cart[sneaker_size_id]['quantity'] = quantity
+    #     else:
+    #         self.cart[sneaker_size_id]['quantity'] += quantity     
+    #     self.save()
+
+    def add(self, sneaker_size, quantity = 1):
         sneaker_size_id = str(sneaker_size.id)
         if sneaker_size_id not in self.cart:
             self.cart[sneaker_size_id] = {'quantity':0,
-                                     'price': str(sneaker_size.sneaker.price)}
-        if override_quantity:
-            self.cart[sneaker_size_id]['quantity'] = quantity
-        else:
-            self.cart[sneaker_size_id]['quantity'] += quantity     
+                                     'price': str(sneaker_size.sneaker.price)}     
+        self.cart[sneaker_size_id]['quantity'] = quantity
         self.save()
 
     def remove(self, sneaker_size):

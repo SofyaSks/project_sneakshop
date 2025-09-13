@@ -1,17 +1,22 @@
 from django import forms
 from main.models import SneakerSize
 
-PRODUCT_QUANTITY_CHOICES = [(i, str(i)) for i in range (1,6)]
 
 class CartAddProductForm(forms.Form):
-    size_id = forms.IntegerField(widget=forms.HiddenInput)
-    quantity = forms.TypedChoiceField(
-        choices = PRODUCT_QUANTITY_CHOICES,
-        coerce = int
+
+    size = forms.ModelChoiceField(
+        queryset = SneakerSize.objects.none(), 
+        to_field_name = 'id',
+        empty_label = None
     )
 
-    override = forms.BooleanField(required=False,
-                                  initial = False,
-                                  widget=forms.HiddenInput)
-    
+    def __init__(self, *args, **kwargs):
+        # pop удаляет ключ 'sneaker' из kwargs и возвращает его значение либо None.
+        sneaker = kwargs.pop('sneaker', None)   # достаём sneaker из аргументов
+        # Вызывает стандартную инициализацию формы Django
+        super().__init__(*args, **kwargs)       # вызываем базовый конструктор
+        if sneaker:                             # если передан конкретный кроссовок
+            self.fields['size'].queryset = SneakerSize.objects.filter(sneaker=sneaker)
+
+   
     

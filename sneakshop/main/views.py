@@ -37,7 +37,7 @@ def catalog(request, category_slug = None):
 def product_details(request, slug):
     sneaker = get_object_or_404(Sneaker, slug = slug, available = True) 
     sizes = SneakerSize.objects.filter(sneaker=sneaker, available = True)
-    cart_product_form = CartAddProductForm
+    cart_product_form = CartAddProductForm(sneaker = sneaker)
     return render(
         request,
         'main/detail.html',

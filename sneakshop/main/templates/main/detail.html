@@ -17,22 +17,13 @@
                 {{ sneaker.description }}
               </p>
 
-              <div class="sizes d-flex">
-                {% for size in sizes %}
-                 <form action={% url 'cart_add' sneaker.id %} method="post" class="size-expand d-flex">
-                  {% csrf_token %}
-                  <div class="radio-size">
-                    <input type="radio" id= {{ size.size }} value= {{ size.id }} name='size'>
-                    <label for={{ size.size }}>{{ size.size }}</label>
-                    <p>Осталось: {{ size.amount }}</p>
-                    {{ cart_product_form.quantity }}
-                      <input type="hidden" name="size_id" value={{ size.id }}>
-                      <input type="hidden" name="override" value="False">
-                      <button type="submit">Добавить</button>
-                  </div>
-                  </form>
-                {% endfor %}
-              </div>
+              
+
+              <form action={% url 'cart_add' sneaker.id %} method="post" >
+                {{ cart_product_form }}
+                {% csrf_token %}
+                <button type="submit">Добавить</button>
+              </form>
 
 
              
