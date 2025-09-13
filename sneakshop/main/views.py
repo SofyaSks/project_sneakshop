@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Sneaker, Category, SneakerSize
 from cart.forms import CartAddProductForm
+from datetime import datetime
 
 def index(request):
     return render(

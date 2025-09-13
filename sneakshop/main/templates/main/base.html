@@ -29,7 +29,7 @@
                         </div>
                     </li>
                     <li>
-                        <a href= {% url 'index' %}>
+                        <a href= {% url 'catalog' %}>
                             <img class="logo" src="/media/logo.png" alt="">
                         </a>
                     </li>
@@ -70,7 +70,7 @@
         {% block body %}  {% endblock body %}
     </div>
 
-    <footer class="footer m-5 ">
+    <footer class="footer m-5 fixed-bottom">
     <ul class="footer-list d-flex">
         <li>
             <a href="#">insta</a>
@@ -85,9 +85,12 @@
             <p>contacts</p>
         </li>
     </ul>
-    </footer>
+</footer>
 
 
     <script src = {% static 'bootstrap\js\bootstrap.bundle.min.js' %}></script>
 </body>
+
+
+
 </html>

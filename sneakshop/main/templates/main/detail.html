@@ -4,26 +4,31 @@
 {% block title %} Detail {% endblock title %} 
 
  {% block body %}  
-         <div class="detail d-flex">
+         <div class="detail d-flex mt-5">
+          <div class="detail-img">
             <img src={{ sneaker.image.url }} alt="">
+            <p class="detail-price ">
+                Price: {{ sneaker.price }} $
+            </p>
+          </div>
             <div class="detail-text">
-              <p class="name">
-                {{ sneaker.brand }}
+              <p class="detail-name">
+                {{ sneaker.brand }} {{ sneaker.name }}   
               </p>
-              <p class="name">
-                {{ sneaker.name }}              
+              
+              <p class="detail-description">
+                <span style="font-weight: bold; font-size: 18px;" >Description:</span> {{ sneaker.description }}
               </p>
-              <p class="name">
-                {{ sneaker.description }}
-              </p>
-
               
 
-              <form action={% url 'cart_add' sneaker.id %} method="post" >
+          
+              <form action={% url 'cart_add' sneaker.id %} method="post" class="detail-form" >
                 {{ cart_product_form }}
                 {% csrf_token %}
-                <button type="submit">Добавить</button>
+                <button type="submit" >Add to cart</button>
               </form>
+              
+              
 
 
              
