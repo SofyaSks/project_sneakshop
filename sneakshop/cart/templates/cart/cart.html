@@ -1,46 +1,35 @@
 {% extends 'main/base.html' %}
 {% load static %}
 
-{% block title %} Catalog {% endblock title %} 
+{% block title %} Cart {% endblock title %} 
 
  {% block body %} 
     <div class="cart-container">
-  <h2>Ваша корзина</h2>
+  <h2 class="mt-5">Your cart</h2>
 
   {% if cart %}
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Товар</th>
-          <th>Размер</th>
-          <th>Цена</th>
-          <th>Количество</th>
-          <th>Сумма</th>
-          <th></th>
-        </tr>
-      </thead>
+    <table class="table cart-table mt-3" >
+      
       <tbody>
         {% for item in cart %}
           <tr>
             <td>
-              {{ item.sneaker.name }}
+              <img style="width: 120px; height: 150px;"  src={{ item.sneaker.image.url }} alt="">
+            </td>
+            <td >
+              {{ item.sneaker.brand }} {{ item.sneaker.name }}
             </td>
             <td>
               {{ item.size }}
             </td>
             <td>
-              {{ item.price }} ₽
+              {{ item.price }} $
             </td>
+            
             <td>
-              {{ item.quantity }}
-            </td>
-            <td>
-              {{ item.total_price }} ₽
-            </td>
-            <td>
-              <form action="{% url 'cart_remove' item.sneaker_size.id %}" method="post">
+              <form action={% url 'cart_remove' item.sneaker_size.id %} method="post">
                 {% csrf_token %}
-                <button type="submit" class="btn btn-danger btn-sm">Удалить</button>
+                <button type="submit" class="cart-remove-btn">Remove</button>
               </form>
             </td>
           </tr>
@@ -49,13 +38,17 @@
     </table>
 
     <div class="cart-total">
-      <h4>Итого: {{ cart.get_total_price }} ₽</h4>
+      <h4 class="mt-5" style="font-weight: bolder;">Total: {{ cart.get_total_price }} $</h4>
     </div>
+
+    <button>CHECKOUT</button>
 
 
   {% else %}
-    <p>Ваша корзина пуста.</p>
+    <p>Empty</p>
   {% endif %}
+
+
 </div>
 
 

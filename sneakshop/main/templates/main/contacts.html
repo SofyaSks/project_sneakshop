@@ -1,0 +1,21 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %} Contacts {% endblock title %} 
+
+ {% block body %} 
+
+ <h2 class="mt-5">Where to find us</h2><br>
+ 
+ <div id="map" style="width: 60vw;">
+
+ </div>
+
+
+
+<script src="https://api-maps.yandex.ru/2.1/?lang=en_US">
+</script>
+
+<script  src={% static 'js/map.js' %}></script>
+
+ {% endblock body %}

@@ -1,0 +1,23 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %} New {% endblock title %} 
+
+ {% block body %} 
+
+   <div class=" catalog d-flex g-4">
+      {% for s in sneakers %}
+         <a href= {{ s.get_absolute_url }}>
+            <div class="catalog-item">
+               <img src={{ s.image.url }} alt="">
+               <p class="catalog-name">
+                  {{ s.brand }} {{ s.name }} 
+               </p>
+               <p class="catalog-price">
+                  {{ s.price }} $
+               </p>
+            </div>
+         </a>   
+      {% endfor %}
+   </div>
+ {% endblock body %}

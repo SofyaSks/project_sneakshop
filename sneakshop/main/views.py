@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Sneaker, Category, SneakerSize
 from cart.forms import CartAddProductForm
-from datetime import datetime
+
 
 def index(request):
     return render(
@@ -9,16 +9,6 @@ def index(request):
         'main/index.html',
     )
     
-
-# def catalog(request):
-#     sneakers = Sneaker.objects.filter(available = True)
-#     return render(
-#         request,
-#         'main/catalog.html',
-#         {
-#             'sneakers': sneakers
-#         }
-#     )
 
 def catalog(request, category_slug = None):
     sneakers = Sneaker.objects.filter(available = True)
@@ -49,3 +39,20 @@ def product_details(request, slug):
         }
     )
     
+def new(request):
+    sneakers = Sneaker.objects.filter(available=True).order_by('-created')[:6]
+    
+    return render(
+        request,
+        'main/new.html',
+        {
+            'sneakers': sneakers
+        }
+    )
+
+def contacts(request):
+    return render(
+        request,
+        'main/contacts.html',
+
+    )
