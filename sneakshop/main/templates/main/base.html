@@ -15,9 +15,9 @@
         <div class="div-menu m-3">
             <nav>
                 <ul class="nav-list d-flex">
-                    <li class="nav-li mt-5 pt-3">
+                    <!-- <li class="nav-li mt-5 pt-3">
                         <a href= {% url 'index' %}>HOME</a>
-                    </li>
+                    </li> -->
                     <li class="nav-li mt-5 pt-3">
 
                         <a href= {% url 'catalog' %} class="catalog-li">CATALOG</a>
@@ -28,14 +28,15 @@
                             {% endfor %}
                         </div>
                     </li>
+                    <li class="nav-li mt-5 pt-3">
+                        <a href={% url 'new' %}>NEW</a>
+                    </li>
                     <li>
                         <a href= {% url 'catalog' %}>
                             <img class="logo" src="/media/logo.png" alt="">
                         </a>
                     </li>
-                    <li class="nav-li mt-5 pt-3">
-                        <a href={% url 'new' %}>NEW</a>
-                    </li>
+                    
                     <li class="nav-li mt-5 pt-3">
                         <a href={% url 'contacts' %}>CONTACTS</a>
                     </li>
