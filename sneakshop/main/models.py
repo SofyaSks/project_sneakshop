@@ -2,7 +2,7 @@ from django.db import models
 from django.urls import reverse 
 
 class Category(models.Model):
-    name = models.CharField(max_length=20, unique=True, verbose_name='Название')
+    name = models.CharField(max_length=20, unique=True, verbose_name='Category')
     slug = models.SlugField(max_length=20)
 
     class Meta:
@@ -17,7 +17,7 @@ class Category(models.Model):
         return reverse('catalog_by_category', args = [self.slug])
     
 class Color(models.Model):
-    name = models.CharField(max_length=20, unique= True, verbose_name='Название')
+    name = models.CharField(max_length=20, unique= True, verbose_name='Color')
     slug = models.SlugField(max_length=20)
 
     # class Meta:
@@ -26,6 +26,7 @@ class Color(models.Model):
 
     def __str__(self):
         return self.name
+    
 
 class Size(models.Model):
     size = models.DecimalField(max_digits=3, decimal_places=1, unique=True)
@@ -39,7 +40,7 @@ class Size(models.Model):
 
 
 class Sneaker(models.Model):
-    brand = models.CharField(max_length=30)
+    brand = models.CharField(max_length=50)
     name = models.CharField(max_length=30)
     slug = models.SlugField(max_length=30)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='sneakers')

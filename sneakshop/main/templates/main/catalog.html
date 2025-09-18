@@ -5,6 +5,27 @@
 
  {% block body %} 
 
+ <div class="catalog-container d-flex">
+   <div class="filters m-5">
+      <form action="">
+         <p class="filter-name">Brand</p>
+         {% for s in sneakers %}
+            <div class="filter-fields">
+               <input type="radio" id="brand-{{ s.brand }}" name="brand" value= {{ s.brand }}>
+               <label for="brand-{{ s.brand }}">{{ s.brand }}</label>
+            </div>
+         {% endfor %}
+         <p class="filter-name">Color</p>
+         {% for s in sneakers %}
+            <div class="filter-fields">
+               <input type="radio" id="color-{{ s.color }}" name="color" value= {{ s.color.slug }}>
+               <label for="color-{{ s.color }}">{{ s.color }}</label>
+            </div>
+         {% endfor %}
+         <input type="submit" value="Apply">
+      </form>
+
+   </div>
    <div class=" catalog d-flex g-4">
       {% for s in sneakers %}
          <a href= {{ s.get_absolute_url }}>
@@ -20,4 +41,5 @@
          </a>   
       {% endfor %}
    </div>
+</div>
  {% endblock body %}

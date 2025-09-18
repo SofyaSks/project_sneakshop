@@ -3,11 +3,11 @@ from .models import Sneaker, Category, SneakerSize
 from cart.forms import CartAddProductForm
 
 
-def index(request):
-    return render(
-        request,
-        'main/index.html',
-    )
+# def index(request):
+#     return render(
+#         request,
+#         'main/index.html',
+#     )
     
 
 def catalog(request, category_slug = None):

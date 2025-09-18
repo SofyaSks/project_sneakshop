@@ -11,6 +11,7 @@ class AdminCategory(admin.ModelAdmin):
     list_display = ['name', 'slug']
     prepopulated_fields = {'slug': ('name', )}
 
+
 @admin.register(models.Color)
 class AdminColor(admin.ModelAdmin):
     list_display = ['name', 'slug']
