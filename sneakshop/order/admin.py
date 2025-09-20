@@ -7,5 +7,5 @@ class AdminOrder(admin.ModelAdmin):
 
 @admin.register(models.OrderSneaker)
 class AdminOrderSneaker(admin.ModelAdmin):
-    list_display = ['order', 'sneaker']
+    list_display = ['order', 'sneaker', 'size']
 

@@ -1,6 +1,6 @@
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
-from main.models import SneakerSize
+from main.models import SneakerSize, Sneaker
 
 class Order(models.Model):
     phone = PhoneNumberField(region = 'CA')
@@ -14,5 +14,8 @@ class Order(models.Model):
 
 class OrderSneaker(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
-    sneaker = models.ForeignKey(SneakerSize, on_delete=models.CASCADE)
+    sneaker = models.ForeignKey(Sneaker, on_delete=models.CASCADE)
+    size = models.ForeignKey(SneakerSize, on_delete=models.CASCADE)
+
+
 

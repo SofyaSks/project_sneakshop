@@ -7,23 +7,54 @@
 
  <div class="catalog-container d-flex">
    <div class="filters m-5">
-      <form action="">
+      <!-- <form action="" method="post">
+         {% csrf_token %}
+         <h5>Filter by:</h5>
          <p class="filter-name">Brand</p>
          {% for s in sneakers %}
             <div class="filter-fields">
-               <input type="radio" id="brand-{{ s.brand }}" name="brand" value= {{ s.brand }}>
+               <input type="radio" id="brand-{{ s.brand }}" name="brand" value='{{ s.brand }}'>
                <label for="brand-{{ s.brand }}">{{ s.brand }}</label>
             </div>
          {% endfor %}
          <p class="filter-name">Color</p>
          {% for s in sneakers %}
             <div class="filter-fields">
-               <input type="radio" id="color-{{ s.color }}" name="color" value= {{ s.color.slug }}>
+               <input type="radio" id="color-{{ s.color }}" name="color" value={{ s.color.id }}>
                <label for="color-{{ s.color }}">{{ s.color }}</label>
             </div>
          {% endfor %}
+         <h5>Sort by:</h5>
+         <p class="sort-name">Price</p>
+            <div class="sort-fields">
+               <input type="radio" id="lth" name="sort" value = 'lth'>
+               <label for="lth">From lowest to highest</label>
+               <br>
+               <input type="radio" id="htl" name="sort" value= 'htl'>
+               <label for="htl">From highest to lowest</label>
+            </div>
          <input type="submit" value="Apply">
+         <input type="reset" value="Reset">
+      </form> -->
+<aside style="position: absolute; left: 0; margin-left: 10px;">
+      <form method="post">
+         {% csrf_token %}
+         <h5>Filter by:</h5>
+         <p class="filter-name">Brand</p>
+         {{ form.brand }}
+
+         <p class="filter-name">Color</p>
+         {{ form.color }}
+
+         <h5 class="mt-5">Sort by:</h5>
+         <p class="filter-name">Price</p>
+         {{ form.sort }}
+
+         <input type="submit" value="Apply">
+         <button><a href={% url 'catalog' %}>Reset</a></button>
       </form>
+</aside>
+      
 
    </div>
    <div class=" catalog d-flex g-4">

@@ -18,7 +18,7 @@ class AdminColor(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name', )}
 
 @admin.register(models.Size)
-class AdminSneaker(admin.ModelAdmin):
+class AdminSize(admin.ModelAdmin):
     list_display = ['size']
 
 @admin.register(models.SneakerSize)

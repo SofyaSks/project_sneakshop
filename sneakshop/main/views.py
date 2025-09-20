@@ -1,14 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Sneaker, Category, SneakerSize
 from cart.forms import CartAddProductForm
+from django.views.decorators.http import require_POST
+from.forms import FilterSortForm
 
-
-# def index(request):
-#     return render(
-#         request,
-#         'main/index.html',
-#     )
-    
 
 def catalog(request, category_slug = None):
     sneakers = Sneaker.objects.filter(available = True)
@@ -16,14 +11,38 @@ def catalog(request, category_slug = None):
     if category_slug:
         category = get_object_or_404(Category, slug = category_slug)
         sneakers = Sneaker.objects.filter(category = category)
+
+    form = FilterSortForm(request.POST or None)
+    if request.method == "POST" and form.is_valid():
+        cd = form.cleaned_data
+        brand = cd['brand']
+        color = cd['color']
+        sort = cd['sort']
+        if brand:
+            sneakers = sneakers.filter(brand = brand)
+        if color:
+            sneakers = sneakers.filter(color=color)
+        if sort == 'lth':
+            sneakers = sneakers.order_by('price')
+        if sort == 'htl':
+            sneakers = sneakers.order_by('-price')
+
+
+
     return render(
         request,
         'main/catalog.html',
         {
             'category': category,
-            'sneakers': sneakers
+            'sneakers': sneakers,
+            'form': form
         }
-    )
+)
+
+
+
+
+        
 
 def product_details(request, slug):
     sneaker = get_object_or_404(Sneaker, slug = slug, available = True) 

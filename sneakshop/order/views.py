@@ -10,8 +10,10 @@ def createOrder(request):
         if form.is_valid():
             order = form.save()
             for item in cart:
+                sneaker = item.get('sneaker')
+                size = item.get('sneaker_size')
                 OrderSneaker.objects.create(
-                    order = order, sneaker = item['sneaker']
+                    order = order, sneaker = sneaker, size = size
                 )
             cart.clear()
             return render(
