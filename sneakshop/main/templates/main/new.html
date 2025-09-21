@@ -5,16 +5,16 @@
 
  {% block body %} 
 
-   <div class=" catalog d-flex g-4">
+   <div class="catalog-new d-flex g-4 mt-3 mb-5">
       {% for s in sneakers %}
          <a href= {{ s.get_absolute_url }}>
             <div class="catalog-item">
-               <img src={{ s.image.url }} alt="">
+               <img class="new-img" src={{ s.image.url }} alt="">
                <p class="catalog-name">
                   {{ s.brand }} {{ s.name }} 
                </p>
                <p class="catalog-price">
-                  {{ s.price }} $
+                  $ {{ s.price }} 
                </p>
             </div>
          </a>   

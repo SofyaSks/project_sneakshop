@@ -16,7 +16,7 @@ class CartAddProductForm(forms.Form):
         # Вызывает стандартную инициализацию формы Django
         super().__init__(*args, **kwargs)       # вызываем базовый конструктор
         if sneaker:                             # если передан конкретный кроссовок
-            self.fields['size'].queryset = SneakerSize.objects.filter(sneaker=sneaker)
+            self.fields['size'].queryset = SneakerSize.objects.filter(sneaker=sneaker).order_by('size__size')
 
    
     

@@ -23,11 +23,4 @@ class FilterSortForm(forms.Form):
         required=False,
         widget=forms.RadioSelect)
     
-    # def __init__(self, *args, **kwargs):
-    #     super().__init__(*args, **kwargs)
-    #     self.fields["brand"].choices = [
-    #         (b, b) for b in Sneaker.objects.values_list("brand", flat=True).distinct()
-    #     ]
-    #     self.fields["color"].choices = [
-    #         (c.id, c.name) for c in Color.objects.all().distinct()
-    #     ]
+    
