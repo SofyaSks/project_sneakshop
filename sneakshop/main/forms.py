@@ -1,6 +1,6 @@
 from django import forms
 from . import models
-from .models import Sneaker,Color  
+from .models import Sneaker,Color, Size  
 
 class FilterSortForm(forms.Form):
 
@@ -16,6 +16,13 @@ class FilterSortForm(forms.Form):
         widget=forms.RadioSelect,
         choices = [
             (c.id, c.name) for c in Color.objects.all().distinct()
+        ]
+    )
+    size = forms.ChoiceField(
+        required=False,
+        widget=forms.RadioSelect,
+        choices = [
+            (s.id, s.size) for s in Size.objects.all().distinct().order_by('size')
         ]
     )
     sort = forms.ChoiceField(

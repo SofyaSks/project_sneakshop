@@ -16,12 +16,15 @@ def catalog(request, category_slug = None):
     if request.method == "POST" and form.is_valid():
         cd = form.cleaned_data
         brand = cd['brand']
+        size = cd['size']
         color = cd['color']
         sort = cd['sort']
         if brand:
             sneakers = sneakers.filter(brand = brand)
         if color:
             sneakers = sneakers.filter(color=color)
+        if size:
+            sneakers = sneakers.filter(sizes=size)
         if sort == 'lth':
             sneakers = sneakers.order_by('price')
         if sort == 'htl':
