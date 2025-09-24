@@ -268,7 +268,7 @@ img{
 }
 
 .filter-buttons {
-    margin-left: 3px;
+    margin-left: -2px;
     width: 80px;
     height: 40px;
     border-radius: 10px;
@@ -324,12 +324,28 @@ img{
     
 }
 
+.cart-remove-btn:hover{
+    color: red;
+    border: 1px solid red;
+}
+
 #map{
     width: 900px;
     height: 600px;
     background-color: black; 
 }
 
+.create-order{
+    margin-top: 8px;
+    height: 50px;
+    width: 150px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.create-order:hover{
+    border: 3px solid black;
+}
 
 /* order */
 
@@ -354,3 +370,10 @@ img{
     width: 70px;
 }
 
+.errorlist{
+    visibility:collapse;
+}
+
+.errorlist li{
+    visibility:collapse;
+}

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Order, OrderSneaker
 from .forms import OrderCreateForm
 from cart.cart import Cart
@@ -20,6 +20,13 @@ def createOrder(request):
             request,
             'order/created.html',
             {'order': order}
+        )
+        else:
+            # return redirect('createOrder')
+            return render(
+            request,
+            'order/create.html',
+            {'cart': cart, 'form': form}
         )
     else:
         form = OrderCreateForm()           
