@@ -9,7 +9,7 @@
    
    <div class="filters m-5 mt-3 mb-5">
       <aside style="position: absolute; left: 0; margin-left: 20px;">
-            <form method="post">
+            <form class="filter-form" method="post">
                {% csrf_token %}
                <h5>Filter by:</h5>
                <p class="filter-name">Brand</p>
@@ -25,7 +25,7 @@
                <p class="filter-name">Price</p>
                {{ form.sort }}
                <div class="filter-buttons-div mt-3">                 
-                  <input class="filter-buttons" type="submit" value="Apply">
+                  <!-- <input class="filter-buttons" type="submit" value="Apply"> -->
                   <button class="filter-buttons"><a href={% url 'catalog' %} style="text-decoration: none; color: black;">Reset</a></button>
                </div> 
             </form>
@@ -48,4 +48,6 @@
       {% endfor %}
    </div>
 </div>
+
+<script  src={% static 'js/filter.js' %}></script>
  {% endblock body %}
