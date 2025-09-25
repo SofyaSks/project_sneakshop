@@ -6,7 +6,7 @@ from.forms import FilterSortForm
 
 
 def catalog(request, category_slug = None):
-    sneakers = Sneaker.objects.filter(available = True)
+    sneakers = Sneaker.objects.filter(available = True).order_by('id')
     category = None
     if category_slug:
         category = get_object_or_404(Category, slug = category_slug)
